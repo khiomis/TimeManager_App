@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: time_manager_core,time_manager_design,time_manager_localization
+dependency_overrides:
+  time_manager_core:
+    path: ..\\..\\packages\\time_manager_core
+  time_manager_design:
+    path: ..\\..\\packages\\time_manager_design
+  time_manager_localization:
+    path: ..\\..\\packages\\time_manager_localization

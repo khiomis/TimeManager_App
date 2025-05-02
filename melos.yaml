@@ -1,0 +1,5 @@
+name: TimeManager
+
+packages:
+  - apps/**
+  - packages/**
