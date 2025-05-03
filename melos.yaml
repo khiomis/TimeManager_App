@@ -3,3 +3,83 @@ name: TimeManager
 packages:
   - apps/**
   - packages/**
+
+scripts:
+  analyze:
+    exec: dart analyze .
+    description: Analyse all packages for possible problems.
+
+  build:
+    description: build_runner build all modules.
+    run: "flutter pub run build_runner build --delete-conflicting-outputs"
+    exec:
+      concurrency: 1
+      orderDependents: true
+    packageFilters:
+      dependsOn: build_runner
+
+  buildclean:
+    description: build_runner clean.
+    run: "flutter clean && flutter pub run build_runner clean"
+    exec:
+      concurrency: 1
+      orderDependents: true
+    packageFilters:
+      dependsOn: build_runner
+
+  watch:
+    description: watch package.
+    run: "dart run build_runner watch"
+    exec:
+      concurrency: 1
+      orderDependents: true
+    packageFilters:
+      dependsOn: build_runner
+
+  build-dev-android:
+    description: Build Android AppBundle for Dev Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build appbundle --flavor=development --dart-define-from-file=dev.env"
+
+  build-qa-android:
+    description: Build Android AppBundle for QA Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build appbundle --flavor=quality --dart-define-from-file=qa.env"
+
+  build-prd-android:
+    description: Build Android AppBundle for Prd Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build appbundle --flavor=production --dart-define-from-file=.env"
+
+  build-dev-ios:
+    description: Build iOS app for Dev Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build ipa --flavor=development --dart-define-from-file=dev.env"
+
+  build-qa-ios:
+    description: Build iOS app for QA Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build ipa --flavor=quality --dart-define-from-file=qa.env"
+
+  build-prd-ios:
+    description: Build iOS app for Prd Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build ipa --flavor=production --dart-define-from-file=.env"
+
+  build-dev-web:
+    description: Build web application for Dev Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build web --dart-define-from-file=dev.env"
+
+  build-qa-web:
+    description: Build web application for QA Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build web --dart-define-from-file=qa.env"
+
+  build-prd-web:
+    description: Build web application for Prd Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build web --dart-define-from-file=.env"
+
+  build-dev-windows:
+    description: Build windows application for Dev Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build windows --dart-define-from-file=dev.env"
+
+  build-qa-windows:
+    description: Build windows application for QA Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build windows --dart-define-from-file=qa.env"
+
+  build-prd-windows:
+    description: Build windows application for Prd Environment
+    run: "melos bs && melos build && cd apps/time_manager && flutter build windows --dart-define-from-file=.env"

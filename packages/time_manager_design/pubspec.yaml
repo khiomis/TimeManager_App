@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  time_manager_localization:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
